@@ -1,0 +1,62 @@
+input, label {
+    margin: 5px 5px;
+  }
+  
+  /*.form-group {
+    margin: 30px auto;
+    width: 450px;
+    background-color: black;
+
+  }*/
+  
+  #namediv {
+      color: rgb(187, 86, 86);
+      border: 1px;
+      min-height: 100px;
+  }
+  #contactdiv {
+      color: rgb(187, 86, 86);
+      border: 1px;
+      min-height: 100px;
+
+  }
+
+
+  
+  
+  #inputStreet {
+    width: 100%;
+    
+  }
+  
+  #inputCity {
+    width: 50%;
+  }
+  
+  #inputState {
+    width: 15%;
+  }
+  
+  #inputZip {
+    width: 28%;
+  }
+  
+  #inputfname {
+    width: 45%;
+  }
+  
+  #inputmname {
+    width: 45%;
+  }
+
+  #inputlname {
+    width: 45%;
+  }
+
+  #inputCountry {
+    width: 50%;
+  }
+  
+  #inputqualification {
+    width: 50%;
+  }
