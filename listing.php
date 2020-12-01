@@ -2,11 +2,11 @@
 require 'connect.php';
 require 'filepath.php';
 
-$query = 'SELECT * from design where sub_category="'.$_GET['sub-category'].'"';
+$query = 'SELECT * from product where sub_category="'.$_GET['sub-category'].'"';
 
 
-    $designs = mysqli_query($connection, $query);
-    if(mysqli_num_rows($designs) == 0){
+    $products = mysqli_query($connection, $query);
+    if(mysqli_num_rows($products) == 0){
         echo '<h1>ERROR! Currently, No such data available.</h1>';
     }
 
@@ -42,15 +42,11 @@ $query = 'SELECT * from design where sub_category="'.$_GET['sub-category'].'"';
     </head>
     <body>
         <?php
-            if( $designs ){
-                while($row = mysqli_fetch_assoc($designs)){
-                    $prod_query = 'SELECT * from product where prod_id = '.$row['prod_id'];
-                    $prod = mysqli_query($connection, $prod_query);
-                    $prod_count = 0;
-                    if($prod){
-                        while($prod_row = mysqli_fetch_assoc($prod)){
-                            $prod_count += 1;
-                            if($prod_count < 11){
+            if( $products ){
+                $prod_count = 0;
+                while($prod_row = mysqli_fetch_assoc($products)){
+                    $prod_count += 1;
+                    if($prod_count < 11){
         ?>
         <div class="container">
             <img src="<?php echo $prod_img_path.$prod_row['img'] ?>" />;
@@ -59,8 +55,6 @@ $query = 'SELECT * from design where sub_category="'.$_GET['sub-category'].'"';
             Price: <?php echo $prod_row['price'];?>
         </div>
         <?php 
-                            }
-                        }
                     }
                 }
             }

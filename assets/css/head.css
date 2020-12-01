@@ -1,0 +1,47 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+div.head{
+  height: 15%;
+  background: #E74C3C;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+div.name, div.slogan{
+  padding-left: 1%;
+  color: #99A3A4;
+}
+div.name{
+  padding-top: 0.5%;
+  font-family: fantasy;
+  font-size: 30px;
+}
+div.slogan{
+  padding-top: 0.5%;
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: 15px;
+}
+nav{
+  padding-top: 1%;
+  display: flex;
+}
+ul.navlinks li{
+  list-style: none;
+}
+ul.navlinks{
+  display: flex;
+  justify-content: space-around;
+  width: 75vh;
+}
+ul.navlinks a{
+  text-decoration: none;
+  color: #99A3A4;
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: 18px;
+}
