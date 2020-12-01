@@ -1,7 +1,8 @@
-input, label {
-    margin: 5px 5px;
+
+  body{
+    background-color: #99a3a4;
+    
   }
-  
   /*.form-group {
     margin: 30px auto;
     width: 450px;
@@ -9,54 +10,59 @@ input, label {
 
   }*/
   
-  #namediv {
-      color: rgb(187, 86, 86);
-      border: 1px;
-      min-height: 100px;
   }
   #contactdiv {
-      color: rgb(187, 86, 86);
+    margin-left: 30px;
+    color: rgb(187, 86, 86);
       border: 1px;
       min-height: 100px;
 
   }
-
-
-  
-  
-  #inputStreet {
-    width: 100%;
+  .maincont {
+    margin: 0 auto;
+    background-color: #99a3a4;
+    height: 100%;
     
   }
+.container {
+  font-family: comic sans ms;
+  font-style: inherit;
   
-  #inputCity {
-    width: 50%;
-  }
+  color: black;
+  box-shadow: 10px 10px;
+  min-height: 100px;
+  width: 600px;
+  margin-left: 230px;
+  background-color: #e74c3c;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+#submitdetails {
+  margin-left: 480px;
+  min-height: 10%;
+  min-width: auto;
+  padding: 3px;
+  color: rgb(21, 122, 51);
+  box-shadow: 5px 5px;
   
-  #inputState {
-    width: 15%;
-  }
+}
   
-  #inputZip {
-    width: 28%;
-  }
   
-  #inputfname {
-    width: 45%;
-  }
   
-  #inputmname {
-    width: 45%;
+  
+  .form-control {
+    width: 30%;
+    height: 4%;
   }
 
-  #inputlname {
-    width: 45%;
-  }
-
-  #inputCountry {
-    width: 50%;
-  }
+ 
   
   #inputqualification {
-    width: 50%;
+    width: 80%;
+  }
+
+  .address{
+    margin-left:20%;
   }

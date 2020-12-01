@@ -81,8 +81,12 @@
       <!-- Main Body -->
       <?php
       if(isset($_SESSION['user'])&& $_SESSION['type']=='Customer'){
+        
       ?>
-      <a href="./logout.php"><button>Sign Out</button></a>
+        <a href="./logout.php"><button class= 'signout'>Sign Out</button></a>
+      <ul>
+        <li class = 'myad e1'><a href="./userdetail.php">Personal Details</a></li>
+      </ul>
       <?php
       }
       elseif(isset($_SESSION['user'])&& $_SESSION['type']=='Seller'){
@@ -91,10 +95,10 @@
       <ul>
         <li class = 'myad e1'><a href="./userdetail.php">Personal Details</a></li>
         <li class = 'myad'><a href="./nadmin.php">Add New Admin</a></li>
-        <li class = 'myad'><a href="">Add new Product</a></li>
-        <li class = 'myad'><a href="">Add new category</a></li>
-        <li class = 'myad'><a href="">Add new Sub-category</a></li>
-        <li class = 'myad'><a href="">Add items</a></li>
+        <li class = 'myad'><a href="./npro.php">Add new Product</a></li>
+        <li class = 'myad'><a href="./ncat.php">Add new category</a></li>
+        <li class = 'myad'><a href="./nsubcat.php">Add new Sub-category</a></li>
+        <li class = 'myad'><a href="./addItem.php">Add items</a></li>
       </ul>
       <?php
       }

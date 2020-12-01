@@ -1,6 +1,7 @@
 <?php 
   require 'connect.php';
 
+  if(isset($_POST['fname'])){
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
   $mob_no = $_POST['mob-no'];
@@ -9,6 +10,7 @@
   $insert_query = 'INSERT INTO complaint ( fname, lname, mob_no, complaint) VALUES("'.$fname.'","'.$lname.'","'.$mob_no.'","'.$complaint.'");';
   $result = mysqli_query($connection, $insert_query);
   echo $result;
+  }
 ?>
 
 <!DOCTYPE html>

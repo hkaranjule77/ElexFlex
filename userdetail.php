@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("connconf.php");
 
 
@@ -8,52 +9,63 @@ include("connconf.php");
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="assets/css/userdata.css">
+    <link rel="stylesheet" href="assets/css/head.css">
+    <link rel="stylesheet" href="assets/css/foot.css">
+    <style>
+     main{
+        position:fixed;
+        top: 15%;
+        left: 0;
+        right: 0;
+        bottom: 10%;
+        overflow-x: hidden; 
+        overflow-y: auto;
+      }
+      @media screen and (max-width: 600px) {
+      .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+      }
+      }
+    </style>
 </head>
 
 <body>
-    <form action="userdetail.php" method="POST">
+<header>
+      <!--Header-->
+      <?php
+      include 'assets/html/header.html';
+      ?>
+      <!--Header-->
+    </header>
+    <main>
+      <!-- Main Body -->
+      <form method="POST" name='userdetail' onclick=validateform()>
         <div class="maincont">
             <div class="container" id="usernamediv"><br>ENTER a USERNAME<br><br>
-                <input type="username" class="form-control" id="username" placeholder="UserName" name="username">
+                <input type="username" class="form-control" id="username" placeholder="UserName" name="username" required>
             </div><br>
             <div class="container" id="namediv"><br>ENTER YOUR NAME<br><br>
-                <input type="name" class="form-control" id="inputfname" placeholder="First Name" name="inputfname" >
+                <input type="name" class="form-control" id="inputfname" placeholder="First Name" name="inputfname" required>
 
-                <input type="name" class="form-control" id="inputmname" placeholder="Middle Name" name="inputmname">
+                <input type="name" class="form-control" id="inputmname" placeholder="Middle Name" name="inputmname" required>
 
-                <input type="name" class="form-control" id="inputlname" placeholder="Last Name" name="inputlname">
+                <input type="name" class="form-control" id="inputlname" placeholder="Last Name" name="inputlname" required>
             </div><br>
 
             <div id="contactdiv" class="container"><br>CONTACT DETAILS AND DATE OF BIRTH<br><br>
-                <input type="date" class="form-control" id="inputdob" placeholder="Date of Birth" name="inputdob">
+                <input type="date" class="form-control" id="inputdob" placeholder="Date of Birth" name="inputdob" required>
 
-                <input type="text" class="form-control" id="inputnumber" placeholder="mobile number" name="inputnumber">
+                <input type="text" class="form-control" id="inputnumber" placeholder="mobile number" name="inputnumber" required>
 
-                <input type="email" class="form-control" id="inputemail" placeholder="email" name="inputemail">
+                <input type="email" class="form-control" id="inputemail" placeholder="email" name="inputemail" required>
             </div>
             <br>
 
-            <div id="addressdiv" class="container"><br>ENTER YOUR ADDRESS DETAILS<br><br>
-
-                <input type="text" class="form-control" id="inputstreet" placeholder="Street" name="inputstreet">
-                
-                <input type="text" class="form-control" id="landmark" placeholder="Landmark" name="landmark">
-
-                <input type="text" class="form-control" id="inputCity" placeholder="City" name="inputCity">
-
-                <input type="text" class="form-control" id="inputdistrict" placeholder="District" name="inputdistrict">
-
-                <input type="text" class="form-control" id="inputdistate" placeholder="State" name="inputstate">
-
-
-                <input type="text" class="form-control" id="inputpincode" placeholder="Zip" name="inputpincode">
-
-                <input type="text" class="form-control" id="inputcountry" placeholder="Country" name="inputcountry">
-
-            </div><br>
+            
             <div id="qualifdiv" class="container"> <br>ENTER QUALIFICATIONS<br><br>
 
-                <input type="text" class="form-control" id="inputqualification" placeholder="Qualification" name="inputqualification">
+                <input type="text" class="form-control" id="inputqualification" placeholder="Qualification" name="inputqualification" required>
             </div>
             <br>
             <div class="submitdetails" >
@@ -61,52 +73,51 @@ include("connconf.php");
             </div>
         </div>
     </form>
+      <!-- Main Body -->
+    </main>
+    <footer>
+    <!--Footer-->
+    <?php
+    include 'assets/html/footer.html';
+     ?>
+     <!--Footer-->
+    </footer>
+    
 </body>
 
 <?php
 if(isset($_POST['submitdetails']))
 {
-$username=$_POST['username'];    
-$inputstreet=$_POST["inputstreet"];
-$inputlandmark=$_POST['landmark'];
-$inputcity=$_POST['inputCity'];
-$inputdistrict=$_POST['inputdistrict'];
-$inputstate=$_POST['inputstate'];
-$inputpincode=$_POST['inputpincode'];
+    $mysqli = new mysqli("localhost","root","","elexflex");
 
-$fname=$_POST['inputfname']; 
-$mname=$_POST['inputmname']; 
-$lname=$_POST['inputlname']; 
-$qualif=$_POST['inputqualification']; 
-$dob=$_POST['inputdob']; 
-$mobno=$_POST['inputnumber']; 
-$email=$_POST['inputemail']; 
+    if ($mysqli -> connect_errno) {
+      echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+      exit();
+    }
 
-$res="INSERT INTO user_add  
-VALUES ('$username','na','$inputstreet','$inputlandmark','$inputcity','$inputdistrict','$inputstate','$inputpincode')";
+    $valid = "SELECT * FROM user_acc WHERE username = '".$_SESSION["user"]."';";
+    $res = $mysqli->query($valid);
+    $row= mysqli_fetch_assoc($res);
+    $count=mysqli_num_rows($res);
 
-$res="INSERT INTO user_data 
-VALUES ('$username','$fname','$mname','$lname','$qualif','$dob','$mobno','$email')";
+    if($count==0){
+        $res = "INSERT INTO user_data(username, fname, mname, lname, qual, dob, mob_no, email) VALUES ('".$_POST['username']."','".$_POST['inputfname']."','".$_POST['inputmname']."','".$_POST['inputlname']."','".$_POST['inputqualification']."','".$_POST['inputdob']."','".$_POST['inputnumber']."','".$_POST['inputemail']."');";
+        $res .= " UPDATE user_acc SET username='".$_POST['username']."' WHERE username='".$_SESSION['user']."';";
+    }
+    else{
+        $res="UPDATE user_data SET username='".$_POST['username']."',fname='".$_POST['inputfname']."',mname='".$_POST['inputmname']."',lname='".$_POST['inputlname']."',qual='".$_POST['inputqualification']."',dob='".$_POST['inputdob']."',mob_no='".$_POST['inputnumber']."',email='".$_POST['inputemail']."' WHERE 1;";
+        $res .= " UPDATE user_acc SET username='".$_POST['username']."' WHERE username='".$_SESSION['user']."';";
+    }
 
-if ($connection->multi_query($res) === TRUE) {
-    do {
-        /* store first result set */
-        if ($result = mysqli_store_result($connection)) {
-            //do nothing since there's nothing to handle
-            mysqli_free_result($result);
-        }
-        /* print divider */
-        if (mysqli_more_results($connection)) {
-            //I just kept this since it seems useful
-            //try removing and see for yourself
-        }
-    } while (mysqli_next_result($connection));
-    echo "New records created successfully";
-  } else {
-    echo "Error: " . $res . "<br>" . $connection->error;
-  }
-
+if ($mysqli->multi_query($res) === TRUE) {
+      $_SESSION['user'] = $_POST["username"];
+      header("Location: ./useraddress.php");
+    } else {
+      echo "Error: " , $res , "<br>" , $mysqli->error;
+      // "Error: " , '$sql' . "<br>" , '$mysqli->error' ---to find error
+    }
 }
 ?>
+
 
 </html>
