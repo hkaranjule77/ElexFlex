@@ -5,7 +5,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   width: 100%;
   padding: 16px;
   margin: 6px 0 20px 0;
@@ -15,7 +15,7 @@ input[type=text], input[type=password] {
 }
 
 /* Add a background color when the inputs get focus */
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=emai]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -141,31 +141,32 @@ span.psw {
 
 <div id="id02" class="signup">
   <span onclick="document.getElementById('id02').style.display='none'; document.getElementById('id01').style.display='none'" class="close" title="Close signup">&times;</span>
-  <form class="signup-content" action="./assets/forms/fsignup.php" method = POST>
+  <form class="signup-content" id="signup-form" action="./assets/forms/fsignup.php" method = POST>
     <div class="container">
 <img src="./assets/img/e.png" alt="icon" class="icon">
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <input type="email" placeholder="Enter Email" name="email" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" id="pswd" placeholder="Enter Password" name="psw" required>
 
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <input type="password" id='rep-pswd' placeholder="Repeat Password" name="psw-repeat" required>
      
       <label>
         <input type="checkbox" name="remember" style="margin-bottom:15px"> Remember me
       </label>
 
+      <ul id='err-list'></ul>
+
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cnclbtn">Cancel</button>
-        <button type="submit" class="signupbtn">Sign Up</button>
-
+        <button type="button" onclick="check_pswd('pswd', 'rep-pswd', 'err-list', 'signup-form')" class="signupbtn">Sign Up</button>
 
 
 

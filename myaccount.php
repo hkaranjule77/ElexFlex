@@ -1,11 +1,12 @@
-<?php session_start(); ?>
+<?php session_start(); 
+  require 'filepath.php';
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="assets/css/head.css">
-    <link rel="stylesheet" href="assets/css/foot.css">
     <title>ELEXFLEX | My Account</title>
+    <script src="<?php echo $js_asset ?>myaccount.js"></script>
     <style>
       main{
         position:fixed;
@@ -17,10 +18,13 @@
         overflow-y: auto;
       }
       @media screen and (max-width: 600px) {
-      .col-25, .col-75, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
+        .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+        }
       }
+      body{
+        background-image: url('<?php echo $img_asset_url ?>myaccount.jpg');
       }
       button.signout{
         width: 120px;
