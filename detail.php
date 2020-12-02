@@ -40,11 +40,34 @@ else{
     <head>
         <title><?php echo $_GET['prod-id'].'-Product ID | ELEX FLEX' ?></title>
         <link rel="stylesheet" type="text/css" href="assets/css/detail.css">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="assets/css/head.css">
+        <link rel="stylesheet" href="assets/css/foot.css">
+        <title>ELEXFLEX | Elctronics shop</title>
+        <style>
+        main{
+            position:fixed;
+            top: 15%;
+            left: 0;
+            right: 0;
+            bottom: 10%;
+            overflow-x: hidden; 
+            overflow-y: auto;
+        }
+        </style>
     </head>
     <body>
+        <header>
+        <!--Header-->
+            <?php
+            include 'assets/html/header.html';
+            ?>
+        <!--Header-->
+        </header>
+        <main>
         <table>
             <tr>
-                <td><img src="files\img\product\inspiron1.png"></td>
+                <td><img src="files\img\product\<?php echo $prod_row['img']?>" ></td>
                 <td colspan="2">
                     <h2>Specification</h2>
                     <table id="spec_table">
@@ -79,6 +102,9 @@ else{
                 </td>
             </tr>
         </table>
+        <?php
+            include 'assets/html/footer.html';
+        ?>
         <script type="text/javascript">
             var img_path = [
                 <?php 

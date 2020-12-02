@@ -9,7 +9,7 @@ $conn = Connect();
     <meta charset="utf-8">
     <link rel="stylesheet" href="assets/css/head.css">
     <link rel="stylesheet" href="assets/css/foot.css">
-    <title>ELEXFLEX | Elctronics shop</title>
+    <title>ELEXFLEX | Electronics shop</title>
     <style>
       main{
         position:fixed;

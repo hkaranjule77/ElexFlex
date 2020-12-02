@@ -2,14 +2,16 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    
   }
 div.foot{
   text-align: left;
-    background: #E74C3C;
+    background-color: #ec3636;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    color: #99A3A4;
+    color:#0a0a0a;
     padding: 5px;
+    font-weight: bold;
   }

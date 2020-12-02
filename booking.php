@@ -7,7 +7,6 @@
     $brand_name = $_POST['brand-name'];
     $prod_id = $_POST['prod-id'];
     $prod_name = $_POST['prod-name'];
-    echo $brand.$brand_name.$prod_id.$prod_name;
 ?>
 
 <!DOCTYPE html>

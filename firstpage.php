@@ -29,7 +29,7 @@
                             echo '<div class="inner3" id="sub3div">';
                 ?>
                 <div id="category" class="category" >
-                    <img class="image1" src="<?php echo $cat_img_path.$row['img'] ?>"> <br>
+                    <img class="image1 cat-img" src="<?php echo $cat_img_path.$row['img'] ?>"> <br>
                     <label for="fridge" id="ref"><?php echo $row['name'] ?></label> <br>
                     <select onchange="redirect_page('select<?php echo $count?>')" id="select<?php echo $count?>">
                         <option>SELECT Category</option>

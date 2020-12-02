@@ -33,11 +33,9 @@ body {
 }
 
 .image1 {
-	max-width: 90%;
-	max-height: 90%;
 	margin: 0 auto;
 	box-shadow: 5px 5px;
-	background-color: white;
+	background-color: aliceblue;
 }
 .category {
 	box-shadow: 10px 10px black;
@@ -50,6 +48,10 @@ body {
 	margin-left: 100px;
 	margin-top: 20px;
 	float: left;
+}
+.cat-img{
+	height: 200px;
+	width: 200px;
 }
 a {
 	color: aliceblue;
@@ -70,4 +72,7 @@ select {
 }
 #comp {
 	margin-top: 350px;
+}
+img{
+	width: 10px;
 }
