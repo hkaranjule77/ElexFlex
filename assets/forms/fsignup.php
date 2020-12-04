@@ -26,7 +26,6 @@ elseif($count == 1){
 else{
 
 $sql = "INSERT INTO user_acc (username, password, user_type, act_date, act_time) VALUES ('".$_POST["email"]."','".$_POST["psw"]."', 'Customer', CURDATE(), CURTIME());";
-echo 'reached here';
     if ($mysqli->query($sql) === TRUE) {
       $_SESSION['type'] = 'Customer';
         $_SESSION['user'] = $_POST["email"];

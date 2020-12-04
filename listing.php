@@ -29,43 +29,95 @@ $query = 'SELECT * from product where sub_category="'.$_GET['sub-category'].'"';
         <link rel="stylesheet" href="assets/css/head.css">
         <link rel="stylesheet" href="assets/css/foot.css">
         <style>
-            body{
-                background-color:  #99a3a4;
-            }
-            img{
-                width: 200px;
-                height: 160px;
-                display: inline;
-                float: left;
-                padding: 1% 1%;
-            }
-            .container{
-                background-color: #ffffff;
-                border: 1px solid #555555;
-                border-radius: 10px;
-                padding: 1% 1%;
-                height: 200px;
-                margin: 1%;
-            }
-            .prod-name{
-                margin: 1% 0% 0.7% 10%;
-            }
-            main{
-                position:fixed;
-                top: 15%;
-                left: 0;
-                right: 0;
-                bottom: 10%;
-                overflow-x: hidden; 
-                overflow-y: auto;
-            }
-            input[type="submit"]{
-                background-color: #90EE90;
-                border: 0px;
-                border-radius: 5px;
-                margin: 1%;
-                padding: 0.5% 1%;
-            }
+            body {
+            
+            background-image: url("https://previews.123rf.com/images/tashatuvango/tashatuvango1603/tashatuvango160302250/54368250-e-shop-closeup-landing-page-in-doodle-design-style-on-laptop-screen-on-background-of-comfortable-wor.jpg");
+        }
+
+        img {
+            
+            background-color: rgba(255, 255, 255, 0.6);
+            max-width: 300px;
+            height: 190px;
+            display: inline;
+            float: left;
+            padding: 1% 1%;
+            padding-bottom: 20px;
+            border-radius: 10px;
+            transition: 0.4s;
+        }
+
+        .container {
+            background-color: transparent;
+            
+            border-radius: 10px;
+            padding: 1% 1%;
+            min-height: 280px;
+            margin: 1%;
+        }
+
+        .prod-name {
+            margin: 1% 0% 0.7% 10%;
+
+        }
+
+        .prodinfo {
+            vertical-align: text-top;
+            min-width: 500px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 10px;
+            background-color: white;
+            background-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 2px 2px 2px 2px;
+            font-style: italic;
+
+
+        }
+
+       
+
+        td.imgplace{
+            width: 250px;
+            text-align: center;
+        }
+
+        .listing {
+            border-radius: 20px;
+            padding: 10px 10px 10px 10px;
+            width: 70%;
+            min-height: 280px;
+            height: auto;
+        }
+
+        img:hover {
+
+            box-shadow: 2px 2px 5px 5px;
+        }
+
+        .imgplace {
+            
+            min-width: 250px;
+            min-height: 200px;
+            box-shadow: 2px 2px 2px 2px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 10px;
+            
+        }
+        input[type=submit]{
+            font-weight: bolder;
+        }
+        .select:hover{
+            box-shadow:
+            0 0 5px 5px #000,  /* inner white */
+            0 0 5px 5px rgb(250, 165, 165), /* middle magenta */
+            0 0 5px 5px #0ff; /* outer cyan */
+        }
+        .select{
+            background-color: green;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            
+        }
     </style>
         </style>
     </head>
@@ -88,25 +140,36 @@ $query = 'SELECT * from product where sub_category="'.$_GET['sub-category'].'"';
 
         ?>
         <a href="detail.php?prod-id=<?php echo $prod_row['prod_id'] ?>">
-            <div class="container">
-                <img src="<?php echo $prod_img_path.$prod_row['img'] ?>" />
-                <h2><?php echo $brand_assoc[$prod_row['brand_id']].' '.$prod_row['name']?></h2>
-                <br>
-                Price: 
-                <?php echo $prod_row['price'];
-                if(isset($_SESSION['user'])){
-                ?>
-                    <form action="booking.php" method="post">
-                        <input type="hidden" name="prod-id" value="<?php echo $prod_row['prod_id'] ?>">
-                        <input type="hidden" name="prod-name" value="<?php echo $prod_row['name'] ?>">
-                        <input type="hidden" name="brand-id" value="<?php echo $prod_row['brand_id'] ?>">
-                        <input type="hidden" name="brand-name" value="<?php echo $brand_assoc[$prod_row['brand_id']] ?>">
-                        <input type="submit" value="Book">
-                    </form>
-                <?php
-                }
-                ?>
-            </div>
+        <div class="container">
+                           <!--<ul data-role="listview" data-filter="true"><li>-->
+                            <table class="listing">
+                                <tr>
+                                    <td class="imgplace"><img src="<?php echo $prod_img_path . $prod_row['img'] ?>" /></td>
+                                    <td class="prodinfo">
+                                        <h1>Name: <?php echo $prod_row['name']; ?></h1>
+                                        <h3>Price: <?php echo $prod_row['price']; ?> rs</h3>
+                                        <?php
+                                            if(isset($_SESSION['user'])){
+                                        ?>
+                                            <form action="booking.php" method="post">
+                                                <input type="hidden" name="prod-id" value="<?php echo $prod_row['prod_id'] ?>">
+                                                <input type="hidden" name="prod-name" value="<?php echo $prod_row['name'] ?>">
+                                                <input type="hidden" name="brand-id" value="<?php echo $prod_row['brand_id'] ?>">
+                                                <input type="hidden" name="brand-name" value="<?php echo $brand_assoc[$prod_row['brand_id']] ?>">
+                                                <input type="submit" class="select" value="Book">
+                                            </form>
+                                            <br>
+                                        <?php
+                                            }
+                                        ?>
+                                        <form action="detail.php">
+                                            <input type="hidden" name="prod-id" value="<?php echo $prod_row['prod_id'] ?>">
+                                          <input type="submit" class="select" value="! SEE MORE">
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
         </a>
         <?php 
                     }

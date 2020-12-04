@@ -1,4 +1,5 @@
 <?php session_start(); 
+  require 'connect.php';
   require 'filepath.php';
 ?>
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
         }
       }
       body{
-        background-image: url('<?php echo $img_asset_url ?>myaccount.jpg');
+        background-image: url('<?php echo $img_asset_url ?>bg1.jpg');
       }
       button.signout{
         width: 120px;
@@ -94,14 +95,23 @@
       <?php
       }
       elseif(isset($_SESSION['user'])&& $_SESSION['type']=='Seller'){
+        $userdata_query = 'SELECT * from user_data where username="'.$_SESSION['user'].'"';
+        $userdata_res = mysqli_query($connection, $userdata_query);
+        $userdata_row = mysqli_fetch_assoc($userdata_res);
+        if(isset($userdata_row['fname']))
+        echo '<h1 align="center">Welcome '.$userdata_row['fname'].' '.$userdata_row['lname'].' ! </h1>';
+        else
+        echo '<h1 align="center">Welcome '.$_SESSION['user'].'</h1>';
       ?>
+
       <a href="./logout.php"><button class= 'signout'>Sign Out</button></a>
       <ul>
         <li class = 'myad e1'><a href="./userdetail.php">Personal Details</a></li>
         <li class = 'myad'><a href="./nadmin.php">Add New Admin</a></li>
         <li class = 'myad'><a href="./npro.php">Add new Product</a></li>
-        <li class = 'myad'><a href="./ncat.php">Add new category</a></li>
+        <li class = 'myad'><a href="./ncat.php">Add new Category</a></li>
         <li class = 'myad'><a href="./nsubcat.php">Add new Sub-category</a></li>
+        <li class = 'myad'><a href="./nbrand.php">Add New Brand</a></li>
         <li class = 'myad'><a href="./addItem.php">Add items</a></li>
       </ul>
       <?php

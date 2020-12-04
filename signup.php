@@ -5,7 +5,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
 
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password] {
   width: 100%;
   padding: 16px;
   margin: 6px 0 20px 0;
@@ -15,7 +15,7 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 /* Add a background color when the inputs get focus */
-input[type=text]:focus, input[type=password]:focus, input[type=emai]:focus {
+input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -108,6 +108,7 @@ background: #E74C3C;
 border-radius: 13px;
 box-shadow: 0px 0px 70px 10px #555555;
   padding: 20 px;
+  color: white;
 }
 
 span.psw {
@@ -141,32 +142,31 @@ span.psw {
 
 <div id="id02" class="signup">
   <span onclick="document.getElementById('id02').style.display='none'; document.getElementById('id01').style.display='none'" class="close" title="Close signup">&times;</span>
-  <form class="signup-content" id="signup-form" action="./assets/forms/fsignup.php" method = POST>
-    <div class="container">
-<img src="./assets/img/e.png" alt="icon" class="icon">
+  <form class="signup-content" action="./assets/forms/fsignup.php" method = "POST">
+    <div class="container" style="background: url(https://images.squarespace-cdn.com/content/v1/5d0a42589ea6e200018e2d7a/1562355561464-CGJXY0R4JOOG4C4RVVT3/ke17ZwdGBToddI8pDm48kOyctPanBqSdf7WQMpY1FsRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzdDaU_bF7Ds5W9lU7yP8WpaBCM76uVnxdYD9Ka9eZj3NBMAuNC_ujA-eHPkEsGI2A/SBS-animation_600x600_062419.gif?format=1000w) no-repeat; background-size: 100% 100%; ">
+<center><img src="./assets/img/e.png" alt="icon" class="icon"></center>
       <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
       <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="email" required>
+      <input type="text" placeholder="Enter Email" name="email" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" id="pswd" placeholder="Enter Password" name="psw" required>
+      <input type="password" placeholder="Enter Password" name="psw" required>
 
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" id='rep-pswd' placeholder="Repeat Password" name="psw-repeat" required>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
      
       <label>
         <input type="checkbox" name="remember" style="margin-bottom:15px"> Remember me
       </label>
 
-      <ul id='err-list'></ul>
-
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <div class="clearfix">
         <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cnclbtn">Cancel</button>
-        <button type="button" onclick="check_pswd('pswd', 'rep-pswd', 'err-list', 'signup-form')" class="signupbtn">Sign Up</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+
 
 
 

@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require 'connect.php';
 require 'filepath.php';
 
@@ -21,6 +23,7 @@ if(mysqli_num_rows($product) == 1){
 
         $query6 = 'SELECT name from brand where brand_id ='.$prod_row['brand_id'];
         $brand_res = mysqli_query($connection, $query6);
+        $brand_row = mysqli_fetch_assoc($brand_res);
 
         $query7 = 'SELECT * from product where prod_id='.$_GET['prod-id'];
         $prod_res = mysqli_query($connection, $query7);
@@ -43,7 +46,7 @@ else{
         <meta charset="utf-8">
         <link rel="stylesheet" href="assets/css/head.css">
         <link rel="stylesheet" href="assets/css/foot.css">
-        <title>ELEXFLEX | Elctronics shop</title>
+        <title>ELEXFLEX | Electronics shop</title>
         <style>
         main{
             position:fixed;
@@ -53,6 +56,40 @@ else{
             bottom: 10%;
             overflow-x: hidden; 
             overflow-y: auto;
+        }
+        body{
+            background-image: url("https://previews.123rf.com/images/tashatuvango/tashatuvango1603/tashatuvango160302250/54368250-e-shop-closeup-landing-page-in-doodle-design-style-on-laptop-screen-on-background-of-comfortable-wor.jpg");
+        }
+       
+        td{
+            border: 2px solid black;
+            background-color: bisque;
+            border-radius: 10px;
+        }
+        .imgtd{
+            width: 300px;
+            height: 300px;
+            border: 2px solid black;
+        }
+        .spectable{
+            margin-top: 100px;
+            opacity:0.9;
+            border-radius: 10px;
+        }
+        .imgtd{
+            opacity:1;
+        }
+        .select:hover{
+            box-shadow:
+            0 0 5px 5px #000,  /* inner white */
+            0 0 5px 5px rgb(250, 165, 165), /* middle magenta */
+            0 0 5px 5px #0ff; /* outer cyan */
+        }
+        .select{
+            background-color: green;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+            
         }
         </style>
     </head>
@@ -64,10 +101,11 @@ else{
             ?>
         <!--Header-->
         </header>
+        <div class="maindiv">
         <main>
-        <table>
+        <table class="spectable">
             <tr>
-                <td><img src="files\img\product\<?php echo $prod_row['img']?>" ></td>
+                <td class="imgtd"><img src="files\img\product\<?php echo $prod_row['img']?>" ></td>
                 <td colspan="2">
                     <h2>Specification</h2>
                     <table id="spec_table">
@@ -85,12 +123,13 @@ else{
                     </table>
                 </td>
             </tr>
+        <table class="spectable1">
             <tr>
-                <td>
+                <td class="downifotd">
                     <h1>
                     <?php
                         if(mysqli_num_rows($brand_res) == 1){
-                            echo mysqli_fetch_assoc($brand_res)['name'];
+                            echo $brand_row['name'];
                         }
                         if(mysqli_num_rows($prod_res) == 1){
                             $prod_row = mysqli_fetch_assoc($prod_res);
@@ -99,12 +138,31 @@ else{
                     ?>
                     </h1>
                     PRICE: <b><?php echo $prod_row['price'] ?></b>
+                    <?php
+                        echo 'reached another';
+                        if(isset($_SESSION['user'])){
+                            echo 'reached';
+                    ?>
+                        <form action="booking.php" method="post">
+                            <input type="hidden" name="prod-id" value="<?php echo $prod_row['prod_id'] ?>">
+                            <input type="hidden" name="prod-name" value="<?php echo $prod_row['name'] ?>">
+                            <input type="hidden" name="brand-id" value="<?php echo $prod_row['brand_id'] ?>">
+                            <input type="hidden" name="brand-name" value="<?php echo $brand_row['name'] ?>">
+                            <input type="submit" class="select" value="Book">
+                        </form>
+                    <?php
+                        }
+                    ?>
                 </td>
             </tr>
         </table>
+        </main>
+        </div>
+        <footer>
         <?php
             include 'assets/html/footer.html';
         ?>
+        </footer>
         <script type="text/javascript">
             var img_path = [
                 <?php 

@@ -1,8 +1,8 @@
 body{
-    background-color: #99a3a4;
+    background-image: url('../img/bg1.jpg');
 }
 h1{
-    color: white;
+    color: #ee3636;
     margin: 8% 1% 1% 5%;
     padding: 1%;
 }
@@ -18,3 +18,18 @@ table{
     width: 80%;
     margin: 1%;
 }
+main{
+    position:fixed;
+    top: 15%;
+    left: 0;
+    right: 0;
+    bottom: 10%;
+    overflow-x: hidden; 
+    overflow-y: auto;
+}
+  input[type="submit"]{
+      padding: 1% 2%;
+      background-color: #ee3636;
+      border: 0px;
+      border-radius: 5px;
+  }

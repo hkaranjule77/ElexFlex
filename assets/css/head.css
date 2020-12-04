@@ -5,15 +5,17 @@
 }
 div.head{
   height: 15%;
-  background: #ec3636;
-  position: fixed;
-  top: 0;
+  background: rgba(164, 28, 46, 1);
+  position:fixed;
+  top: 1px;
   left: 0;
   right: 0;
 }
+
 div.name, div.slogan{
   padding-left: 1%;
-  color:#0f0f0f;
+  color: #99A3A4;
+  text-shadow: 2px 1px #000000;
 }
 div.name{
   padding-top: 0.5%;
@@ -25,25 +27,46 @@ div.slogan{
   font-family: sans-serif;
   font-weight: bolder;
   font-size: 15px;
+  text-shadow: 2px 1px #000000;
 }
 nav{
   padding-top: 1%;
   display: flex;
+  float: right;
 }
 ul.navlinks li{
   list-style: none;
+  text-shadow: 3px 1px black;
 }
+ul.navlinks li:hover{
+	
+	box-shadow:
+    0 0 5px 5px #fff,  /* inner white */
+    0 0 5px 5px rgb(250, 165, 165), /* middle magenta */
+    0 0 5px 5px #0ff; /* outer cyan */
+
+}
+
 ul.navlinks{
   display: flex;
   justify-content: space-around;
   width: 75vh;
+  
 }
 ul.navlinks a{
   text-decoration: none;
-  color: #1f1f1f;
+  color: #99A3A4;
   font-family: sans-serif;
   font-weight: bolder;
   font-size: 18px;
 }
-/*#414242
-#303131*/
+
+main{
+  position:fixed;
+  top: 15%;
+  left: 0;
+  right: 0;
+  bottom: 10%;
+  overflow-x: hidden; 
+  overflow-y: auto;
+}

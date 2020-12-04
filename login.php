@@ -3,7 +3,12 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+ 
+  margin: 0;
+  padding: 0;
+}
 
 label{
   color: #99A3A4;
@@ -40,9 +45,12 @@ button:hover {
 
 /* Extra styles for the cancel button */
 .cancelbtn {
-  width: auto;
+  width: 100px;
+  height: 40px;
   padding: 10px 18px;
   background-color: #f44336;
+  border-radius: 10px;
+
 }
 
 /* Center the image and position the close button */
@@ -57,6 +65,7 @@ img.e.jpg{
 }
 
 .container {
+  
   padding: 16px;
 }
 
@@ -67,6 +76,7 @@ span.psw {
 
 /* The form (background) */
 .form {
+
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -133,20 +143,22 @@ span.psw {
 }
 </style>
 </head>
-<body>
+<body style="background-color:#555555">
 <h1 style="width:auto; margin-top:12%; margin-left: 30%;">You have not yet logged in, please log in</h1>
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto; margin-top:2%; margin-left: 42%;">Login</button>
 
 <div id="id01" class="form">
  
   <form class="form-content animate" action="./assets/forms/flogin.php" method="post">
-    <div class="imgcontainer">
+    <!--<div class="imgcontainer" style="background-color: #000;">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close form">&times;</span>
-      <img src="assets/img/e.png" alt="icon" class="icon">
-    </div>
+      
+    </div>-->
 
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
+    <div class="container" style="background: url(https://images.squarespace-cdn.com/content/v1/5d0a42589ea6e200018e2d7a/1562355561464-CGJXY0R4JOOG4C4RVVT3/ke17ZwdGBToddI8pDm48kOyctPanBqSdf7WQMpY1FsRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpzdDaU_bF7Ds5W9lU7yP8WpaBCM76uVnxdYD9Ka9eZj3NBMAuNC_ujA-eHPkEsGI2A/SBS-animation_600x600_062419.gif?format=1000w) no-repeat; background-size: 100% 100%; ">
+    <center><img src="assets/img/e.png" alt="icon" class="icon"></center>  
+    <br>
+    <label for="uname"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
@@ -158,9 +170,7 @@ span.psw {
       <label>
         <input type="checkbox" name="remember"> Remember me
       </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
+    <br><br>
       <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw"><a href="#">Forgot password?</a></span>
     </div>

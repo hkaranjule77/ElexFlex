@@ -1,0 +1,4 @@
+add alerts in insertion of data 
+js in forms
+add confirmations for forms
+add required in all forms
