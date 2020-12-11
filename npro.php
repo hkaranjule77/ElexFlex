@@ -39,6 +39,8 @@
         <link rel="stylesheet" type="text/css" href="<?php echo $css_asset?>forms.css">
     </head>
     <body>
+        <?php include $html_asset.'header.html' ?>
+        <main>
         <h1>Add Product</h1>
         <form action="#" method="post" enctype="multipart/form-data">
             <table>
@@ -132,5 +134,10 @@
                 </tr>
             </table>
         </form>
+        </main>
+        <footer>
+            <!--Footer-->
+            <?php include 'assets/html/footer.html' ?>
+        </footer>
     </body>
 </html>

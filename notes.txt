@@ -1,4 +1,11 @@
+
+# TO-DO List
+
 add alerts in insertion of data 
 js in forms
 add confirmations for forms
 add required in all forms
+add spec-name form
+add spec-value form
+Re-organize dashboard of admin and customer
+add access control on accounts

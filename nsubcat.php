@@ -38,13 +38,9 @@ include 'connect.php';
       include 'db_connection.php';
       $conn = Connect();
     ?>
-    <!--Connection-->
+    <!--Header-->
     <header>
-      <!--Header-->
-      <?php
-      //include 'assets/html/header.html';
-      ?>
-      <!--Header-->
+      <?php //include 'assets/html/header.html' ?>
     </header>
     <main>
       <!-- Main Body -->
@@ -78,7 +74,7 @@ include 'connect.php';
           </td>
         </tr>
           <td colspan="2">
-            <center><input type="submit" value="Submit" onsubmit="display_msg()" name='submit'></center>
+            <center><input type="submit" value="Submit" onsubmit="display_msg()" name='addSubCat'></center>
           </td>
         </tr>
       </table>
@@ -94,7 +90,7 @@ include 'connect.php';
     </footer>
 </body>
 <?php
-if(isset($_POST['submit'])){
+if(isset($_POST['addSubCat'])){
   
   $mysqli = new mysqli("localhost","root","","elexflex");
   
@@ -105,7 +101,7 @@ if(isset($_POST['submit'])){
   $sql = 'INSERT INTO sub_category (name, category) VALUES ("'.$_POST["name"].'", "'.$_POST["category"].'")';
   
   if (mysqli_query($connection, $sql)){
-      header('Location:./myaccount.php');
+      header('Location:./SpecNameForm.php?sub-category='.$_POST['name']);
   }
   else {
     echo "<script>Error: " , $res , "<br>" , $mysqli->error, "<script>";

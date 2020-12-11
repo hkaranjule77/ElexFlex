@@ -7,8 +7,8 @@
     require 'filepath.php';
 
     //fetching brand details
-    $brand_query = 'SELECT * from brand';
-    $brand_res = mysqli_query($connection, $brand_query);
+    $comp_query = 'SELECT * from complaint;';
+    $comp_res = mysqli_query($connection, $comp_query);
 ?>
 
 <html>
@@ -31,30 +31,26 @@
         ?>
             <table>
                 <tr>
-                    <th>Brand</th>
-                    <th>Customer Care</th>
-                    <th>Regtd. Office</th>
+                    <th>Complaint ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Mob No</th>
+                    <th>Complain</th>
                 </tr>
         <?php
-                while($brand_row = mysqli_fetch_assoc($brand_res)){
+                while($comp_row = mysqli_fetch_assoc($comp_res)){
         ?>
-                    <tr>
-                    <!--- brand name --->
-                        <td><?php echo $brand_row['name'] ?></td>
-                    <!--- brand customer care --->
-                        <?php 
-                            $brand_cc_query = 'SELECT customer_care from brand_cc where brand_id='.$brand_row['brand_id'].';'; 
-                            $brand_cc_res = mysqli_query($connection, $brand_cc_query);
-                            $brand_cc_row = mysqli_fetch_assoc($brand_cc_res);
-                        ?>
-                        <td><?php echo $brand_cc_row['customer_care'] ?></td>
-                    <!--- brand  --->
-                        <?php 
-                            $brand_ad_query = 'SELECT * from brand_add where brand_id='.$brand_row['brand_id'].';'; 
-                            $brand_ad_res = mysqli_query($connection, $brand_ad_query);
-                            $brand_ad_row = mysqli_fetch_assoc($brand_ad_res);
-                        ?>
-                        <td><?php echo $brand_ad_row['plot_no'].' '.$brand_ad_row['local_street'].' '.$brand_ad_row['city'].', '.$brand_ad_row['dist'].', '.$brand_ad_row['state'] ?></td>
+                    <tr>                    
+                    <!--- complaint ID --->
+                        <td><?php echo $comp_row['comp_id'] ?></td>
+                    <!--- complainer's first name --->
+                        <td><?php echo $comp_row['fname'] ?></td>
+                    <!--- complainer's last name --->
+                        <td><?php echo $comp_row['lname'] ?></td>
+                    <!--- complainer's mobile number --->
+                        <td><?php echo $comp_row['mob_no'] ?></td>
+                    <!--- complaint --->
+                        <td><?php echo $comp_row['complaint'] ?></td>
                     </tr>
         <?php
                 }
